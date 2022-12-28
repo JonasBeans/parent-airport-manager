@@ -1,0 +1,8 @@
+be\jonasboon\fileinputconverter\input\FlightsFromFileInput.class
+be\jonasboon\fileinputconverter\input\fligths_input\FlightFromFile.class
+be\jonasboon\fileinputconverter\input\fligths_input\FlightFromFileMapper.class
+be\jonasboon\fileinputconverter\input\fligths_input\FlightFromFile$FlightFromFileBuilder.class
+be\jonasboon\fileinputconverter\cli\ApplicationCLI.class
+be\jonasboon\fileinputconverter\input\InputConverter.class
+be\jonasboon\fileinputconverter\input\IInputConverter.class
+be\jonasboon\fileinputconverter\FileInputConverterApplication.class
