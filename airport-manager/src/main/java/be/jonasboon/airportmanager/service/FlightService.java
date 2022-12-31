@@ -9,6 +9,7 @@ import be.jonasboon.airportmanager.model.Flight;
 import be.jonasboon.airportmanager.model.Pilot;
 import be.jonasboon.airportmanager.repository.FlightRepository;
 import be.jonasboon.airportmanager.repository.PilotRepository;
+import be.jonasboon.airportmanager.repository.FlightRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 

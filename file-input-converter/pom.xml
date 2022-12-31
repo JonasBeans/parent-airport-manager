@@ -12,6 +12,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>file-input-converter</name>
 	<description>Converts files to objects concerning airport manager</description>
+	<packaging>jar</packaging>
 
 	<properties>
 		<java.version>11</java.version>

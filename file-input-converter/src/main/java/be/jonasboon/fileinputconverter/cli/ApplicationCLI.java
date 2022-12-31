@@ -1,7 +1,7 @@
 package be.jonasboon.fileinputconverter.cli;
 
 import be.jonasboon.fileinputconverter.input.FlightsFromFileInput;
-import be.jonasboon.fileinputconverter.input.fligths_input.FlightFromFile;
+import be.jonasboon.fileinputconverter.input.fligths_input.FlightFromFileDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,7 +18,7 @@ public class ApplicationCLI implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        inputFileConverter.setFileDirectory();
-        List<FlightFromFile> flights = inputFileConverter.getAllObjectsFromFile("inputFile.txt");
+        List<FlightFromFileDTO> flights = inputFileConverter.getAllObjectsFromFile("inputFile.txt");
+        flights.stream().forEach(System.out::println);
     }
 }

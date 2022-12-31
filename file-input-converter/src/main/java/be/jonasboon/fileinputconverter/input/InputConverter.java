@@ -1,16 +1,21 @@
 package be.jonasboon.fileinputconverter.input;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.*;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.lang.String;
 
-public abstract class InputConverter<T> implements IInputConverter{
+@Slf4j
+public abstract class InputConverter<T> {
     public String fileDirectory;
     List<T> objectsFromFile = new ArrayList<T>();
+
+    public InputConverter(String fileDirectory) {
+        this.fileDirectory = fileDirectory;
+    }
 
     /**
      * @param lineFromFile
@@ -20,39 +25,35 @@ public abstract class InputConverter<T> implements IInputConverter{
      * The Object that will be converted from the file.
      * This is the generic mentioned above.
      */
-    abstract T mapObjectFromFile(String lineFromFile);
+    abstract T mapLineToObject(String lineFromFile);
 
     public List<T> getAllObjectsFromFile(String fileName){
         readFile(fileName);
         return objectsFromFile;
     }
 
-    private void readFile(String fileName){
+    private void readFile(String fileName) {
+            BufferedReader reader = makeReader(fileName);
+            addLinesToList(reader);
+    }
+
+    private void addLinesToList(BufferedReader bis) {
         try {
-            Scanner scanner = new Scanner(lookUpFile(fileDirectory + fileName));
-            while(scanner.hasNext()){
-                String line = scanner.nextLine();
-                System.out.println(line);
-                objectsFromFile.add(mapObjectFromFile(line));
+            String line;
+            while((line = bis.readLine()) != null) {
+                objectsFromFile.add(mapLineToObject(line));
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private File lookUpFile(String fileName) {
-        File file = new File(fileName);
-        return doesFileExist(file);
-    }
-
-    private File doesFileExist(File file){
+    private BufferedReader makeReader(String fileName){
         try {
-            if (file.exists())
-                return file;
-            else
-                throw new FileNotFoundException("File not found: " + file.getName());
-        }
-        catch (IOException e) {
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(fileDirectory + fileName);
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            return new BufferedReader(inputStreamReader);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
