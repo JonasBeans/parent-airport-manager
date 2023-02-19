@@ -35,14 +35,12 @@ public class PassengerService {
     }
 
     public PassengerDTO createPassenger(PassengerDTO passengerDTO) {
-        passengerDTO.hasNoNull();
         Passenger passenger = PassengerMapper.toEntity(passengerDTO);
         return PassengerMapper.toDto(passengerRepository.save(passenger));
     }
 
     public PassengerDTO updatePassenger(Integer id, PassengerDTO passengerDTO) {
         if(passengerRepository.findById(id).isPresent()){
-           passengerDTO.hasNoNull();
            return PassengerMapper.toDto(
                    passengerRepository.save(PassengerMapper.toEntity(id, passengerDTO)));
         } else throw new ResponseStatusException(NOT_FOUND, format("No passenger found with id: %s", id));

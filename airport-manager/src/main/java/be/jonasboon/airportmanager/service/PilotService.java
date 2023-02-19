@@ -1,7 +1,6 @@
 package be.jonasboon.airportmanager.service;
 
 import be.jonasboon.airportmanager.dto.PilotDTO;
-import be.jonasboon.airportmanager.exception.pilot.PilotNotFoundException;
 import be.jonasboon.airportmanager.mapper.PilotMapper;
 import be.jonasboon.airportmanager.model.Pilot;
 import be.jonasboon.airportmanager.repository.PilotRepository;
@@ -36,14 +35,12 @@ public class PilotService {
     }
 
     public PilotDTO createPilot(PilotDTO pilotDTO) {
-        pilotDTO.hasNoNull();
         Pilot pilot = PilotMapper.toEntity(pilotDTO);
         return PilotMapper.toDto(pilotRepository.save(pilot));
     }
 
     public PilotDTO updatePilot(Integer id, PilotDTO pilotDTO) {
         if(pilotRepository.findById(id).isPresent()) {
-            pilotDTO.hasNoNull();
             return PilotMapper.toDto(
                     pilotRepository.save(PilotMapper.toEntity(id, pilotDTO)));
         } else throw new ResponseStatusException(NOT_FOUND, format("No pilot data found for pilot with id: %s", id));
