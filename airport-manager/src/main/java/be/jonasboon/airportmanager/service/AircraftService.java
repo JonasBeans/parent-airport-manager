@@ -39,14 +39,12 @@ public class AircraftService {
     }
 
     public AircraftDTO createAircraft(AircraftDTO aircraftDTO) {
-        aircraftDTO.hasNoNull();
         Aircraft aircraft = aircraftRepository.save(toEntity(aircraftDTO));
         return toDTO(aircraft);
     }
 
     public AircraftDTO updateAircraft(String callsign, AircraftDTO aircraftDTO) {
         if(aircraftRepository.findById(callsign).isPresent()){
-            aircraftDTO.hasNoNullForUpdate();
             Aircraft aircraft = aircraftRepository.save(toEntity(callsign, aircraftDTO));
             return toDTO(aircraft);
         } else throw new ResponseStatusException(NOT_FOUND, String.format("No aircraft found with that id: %s", callsign));

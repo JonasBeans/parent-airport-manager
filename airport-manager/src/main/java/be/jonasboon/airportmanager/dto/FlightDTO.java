@@ -1,10 +1,12 @@
 package be.jonasboon.airportmanager.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
-@Value
+
+@Getter
+@Setter
+@AllArgsConstructor
 @Builder(setterPrefix = "with")
 public class FlightDTO {
 
