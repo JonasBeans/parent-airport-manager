@@ -1,10 +1,9 @@
 package be.jonasboon.airportmanager;
 
+import be.jonasboon.airportmanager.integration.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class AirportManagerApplicationTests {
+class AirportManagerApplicationTests extends AbstractIntegrationTest {
 
 	@Test
 	void contextLoads() {
