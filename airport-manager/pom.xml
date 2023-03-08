@@ -64,6 +64,12 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.24.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>be.jonasboon</groupId>
 			<artifactId>file-input-converter</artifactId>
 			<version>0.0.1-SNAPSHOT</version>

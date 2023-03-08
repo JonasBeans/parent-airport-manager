@@ -44,7 +44,8 @@ public class AircraftService {
     }
 
     public AircraftDTO updateAircraft(String callsign, AircraftDTO aircraftDTO) {
-        if(aircraftRepository.findById(callsign).isPresent()){
+        Optional<Aircraft> aircraftToUpdate = aircraftRepository.findById(callsign);
+        if(aircraftToUpdate.isPresent()){
             Aircraft aircraft = aircraftRepository.save(toEntity(callsign, aircraftDTO));
             return toDTO(aircraft);
         } else throw new ResponseStatusException(NOT_FOUND, String.format("No aircraft found with that id: %s", callsign));
