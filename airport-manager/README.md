@@ -40,6 +40,5 @@ This will add test data to the database.
 
 - Liquibase
 - SpringBoot
-- Testcontainers (should still be configured)
+- Testcontainers
 - Swagger-ui (should still be added)
-- Lombok
