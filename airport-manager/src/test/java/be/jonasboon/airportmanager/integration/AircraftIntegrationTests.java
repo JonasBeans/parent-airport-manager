@@ -1,6 +1,6 @@
 package be.jonasboon.airportmanager.integration;
 
-import be.jonasboon.airportmanager.common.AircraftTestConstants;
+import be.jonasboon.airportmanager.common.AbstractIntegrationTest;
 import be.jonasboon.airportmanager.controller.AircraftController;
 import be.jonasboon.airportmanager.dto.AircraftDTO;
 import org.junit.jupiter.api.Test;
@@ -116,7 +116,7 @@ class AircraftIntegrationTests extends AbstractIntegrationTest {
 
 	@Test
 	void DELETE_deleteAircraftAPI_return200() throws Exception {
-		this.mockMvc.perform(MockMvcRequestBuilders.delete(AircraftTestConstants.DELETE_AIRCRAFT_BY_CALLSIGN.apply("N1234")))
+		this.mockMvc.perform(MockMvcRequestBuilders.delete(DELETE_AIRCRAFT_BY_CALLSIGN.apply("N1234")))
 				.andExpect(status().isOk());
 
 		assertThatThrownBy(() ->
@@ -131,6 +131,4 @@ class AircraftIntegrationTests extends AbstractIntegrationTest {
 			.isInstanceOf(ResponseStatusException.class)
 			.hasMessageContaining("No aircraft found with id: N6969");
 	}
-
-
-}
+ }
