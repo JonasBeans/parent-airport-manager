@@ -1,4 +1,4 @@
-package be.jonasboon.airportmanager.integration;
+package be.jonasboon.airportmanager.common;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

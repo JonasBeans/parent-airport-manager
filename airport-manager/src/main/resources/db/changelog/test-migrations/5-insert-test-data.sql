@@ -1,4 +1,5 @@
-INSERT INTO application.pilot(id,first_name, last_name) VALUES (1, 'first_name_test', 'last_name_test') ON CONFLICT DO NOTHING;
+INSERT INTO application.pilot(first_name, last_name) VALUES ('first_name_test', 'last_name_test') ON CONFLICT DO NOTHING;
+INSERT INTO application.pilot(first_name, last_name) VALUES ('first_name_test', 'last_name_test') ON CONFLICT DO NOTHING;
 INSERT INTO application.aircraft
 (callsign, model, modeltype, modelyear) VALUES
 ('N5432', 'Cessna', 'Skyhawk 172', '2022'),
